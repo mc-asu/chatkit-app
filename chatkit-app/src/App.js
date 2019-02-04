@@ -22,7 +22,7 @@ class App extends Component {
   componentDidMount() {
     const chatManager = new ChatManager({
       instanceLocator,
-      userdId: "manuelc",
+      userId: "manuelc",
       tokenProvider: new TokenProvider({
         url: tokenUrl
       })
@@ -30,7 +30,7 @@ class App extends Component {
 
     chatManager.connect().then(currentUser => {
       currentUser.subscribeToRoom({
-        roomId: 19385683,
+        roomId: "19385683",
         hooks: {
           // event listener when a new message is "created/sent"
           onNewMessage: message => {

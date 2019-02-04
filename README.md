@@ -27,5 +27,3 @@ Added dummy-data to simulate the view.
 
 Added lifecycle method: componentDidMount()
 -we created and connected to the chatmanager chatmanager: see docs @cahtkit/pusher
-
-!!bug: roomId expects a string, but is given a number, can't resolve bug as of now
