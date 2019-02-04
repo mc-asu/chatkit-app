@@ -12,42 +12,42 @@ Modified App.css from tutorial(default setup): will change one by one later on.
 Added the .eslintrc file to the app
 Installed: npm i prettier eslint-config-prettier eslint-plugin-prettier -D
 
-*removed react-logo
-*removed html default comments
+- removed react-logo
+- removed html default comments
 
-added .config.js
+- added .config.js
 
 - has the tokenurl and instanceLocator
 
 ### MessageList Component
 
-Added dummy-data to simulate the view.
+- Added dummy-data to simulate the view.
 
 ### App Component
 
 - Added lifecycle method: componentDidMount()
-- Passed a props (message:[]) into the messagelist component
+- Passed a props into the messagelist component
 
-* we created and connected to the chatmanager chatmanager: see docs @cahtkit/pusher
-* removed the message component, because it gets rendered by the messagelist component
-* onNewMessage > onMessage : new syntax
+- we created and connected to the chatmanager chatmanager: see docs @cahtkit/pusher
+- removed the message component, because it gets rendered by the messagelist component
+- onNewMessage > onMessage : new syntax
 
 ### MessageList Component
 
 - Added the message component
 - Added TODO
 
-* removed the dummydata as we are getting our messages from the api
-* removed the rendered divs
+- removed the dummydata as we are getting our messages from the api
+- removed the rendered divs
 
 ### Message Component
 
-+Added the rendered divs from messagelist into message
-+Added TODO
+- Added the rendered divs from messagelist into message
+- Added TODO
 
-/Changed into a functional component, as it only renders stuff
+- Changed into a functional component, as it only renders stuff
 
 ### SendMessageForm Component
 
-+Added an event that handles submit
-+Added an event that handles change(typing)
+- Added an event that handles submit
+- Added an event that handles change(typing)
