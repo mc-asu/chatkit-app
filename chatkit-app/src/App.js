@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { ChatManager, TokenProvider } from "@pusher/chatkit-client";
 
 //Importing our Components
-import Message from "./components/Message";
 import MessageList from "./components/MessageList";
 import NewRoomForm from "./components/NewRoomForm";
 import RoomsList from "./components/RoomsList";
@@ -29,7 +28,8 @@ class App extends Component {
     });
 
     chatManager.connect().then(currentUser => {
-      currentUser.subscribeToRoom({
+      this.currentUser = currentUser; // currentUser is now available in the whole app instance
+      this.currentUser.subscribeToRoom({
         roomId: "19385683",
         hooks: {
           // event listener when a new message is "created/sent"
@@ -43,13 +43,22 @@ class App extends Component {
     });
   }
 
+  sendMessage = text => {
+    //we will send this down to a child component, so that we get the data from the handleSubmit
+    this.currentUser.sendMessage({
+      text,
+      roomId: "19385683"
+    });
+  };
+
   render() {
     return (
       <div className="app">
         <MessageList messages={this.state.messages} />
         <NewRoomForm />
         <RoomsList />
-        <SendMessageForm />
+        <SendMessageForm sendMessage={this.sendMessage} />{" "}
+        {/* inverse dataflow ( child to parent)*/}
       </div>
     );
   }

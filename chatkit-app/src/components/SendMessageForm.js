@@ -13,22 +13,23 @@ export default class SendMessageForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault(); //prevents the default action of an element
-    // send off message
+    this.props.sendMessage(this.state.message); //inverse dataflow
+    // clears the sent message
+    this.setState({
+      message: ""
+    });
   };
 
   render() {
     return (
-      <div className="send-message-form">
-        <form className="send-message-form">
-          <input
-            onSubmit={this.handleSubmit} // submit event
-            onChange={this.handleChange} // event setup
-            value={this.state.message} //controlling the value of our state programmatically
-            placeholder="Type your message"
-            type="text"
-          />
-        </form>
-      </div>
+      <form onSubmit={this.handleSubmit} className="send-message-form">
+        <input
+          onChange={this.handleChange} // event setup
+          value={this.state.message} //controlling the value of our state programmatically
+          placeholder="Type your message"
+          type="text"
+        />
+      </form>
     );
   }
 }
