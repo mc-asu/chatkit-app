@@ -33,7 +33,7 @@ class App extends Component {
         roomId: "19385683",
         hooks: {
           // event listener when a new message is "created/sent"
-          onNewMessage: message => {
+          onMessage: message => {
             this.setState({
               messages: [...this.state.messages, message] // add the latest message at the end of the array
             });
@@ -46,8 +46,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Message />
-        <MessageList />
+        <MessageList messages={this.state.messages} />
         <NewRoomForm />
         <RoomsList />
         <SendMessageForm />
