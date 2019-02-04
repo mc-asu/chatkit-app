@@ -34,4 +34,18 @@ Added dummy-data to simulate the view.
 ### MessageList Component
 
 +Added the message component
++Added TODO
 -removed the dummydata as we are getting our messages from the api
+-removed the rendered divs
+
+### Message Component
+
++Added the rendered divs from messagelist into message
++Added TODO
+
+/Changed into a functional component, as it only renders stuff
+
+### SendMessageForm Component
+
++Added an event that handles submit
++Added an event that handles change(typing)

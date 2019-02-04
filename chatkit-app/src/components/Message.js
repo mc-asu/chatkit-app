@@ -1,7 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class Message extends Component {
-  render() {
-    return <div className="message">sada</div>;
-  }
+export default function Message(props) {
+  return (
+    /* TODO: add user picture*/
+    <div className="message">
+      <div className="message-username">{props.username}</div>
+      <div className="message-text">{props.text}</div>
+    </div>
+  );
 }
