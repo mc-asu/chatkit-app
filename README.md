@@ -25,18 +25,20 @@ Added dummy-data to simulate the view.
 
 ### App Component
 
-+Added lifecycle method: componentDidMount()
-+Passed a props (message:[]) into the messagelist component
--we created and connected to the chatmanager chatmanager: see docs @cahtkit/pusher
--removed the message component, because it gets rendered by the messagelist component
--onNewMessage > onMessage : new syntax
+- Added lifecycle method: componentDidMount()
+- Passed a props (message:[]) into the messagelist component
+
+* we created and connected to the chatmanager chatmanager: see docs @cahtkit/pusher
+* removed the message component, because it gets rendered by the messagelist component
+* onNewMessage > onMessage : new syntax
 
 ### MessageList Component
 
-+Added the message component
-+Added TODO
--removed the dummydata as we are getting our messages from the api
--removed the rendered divs
+- Added the message component
+- Added TODO
+
+* removed the dummydata as we are getting our messages from the api
+* removed the rendered divs
 
 ### Message Component
 
