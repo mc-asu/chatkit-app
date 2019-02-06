@@ -1,8 +1,5 @@
 # chatkit-app
 
-follow per borgens - chatkit tutorial on scrimba:
-https://scrimba.com/playlist/pbNpTv
-
 ## 2/4/2019
 
 Added following component via rcc for quick setup
@@ -51,3 +48,18 @@ Installed: npm i prettier eslint-config-prettier eslint-plugin-prettier -D
 
 - Added an event that handles submit
 - Added an event that handles change(typing)
+- Added inverse dataflow from sendmessageform to the chat app
+
+## 2/6/2019
+
+### App Component
+
+- Added the getJoinableRooms() to the mount
+- Added two states: joinableRooms and joinedRooms
+- Added catch phrase for getJoinableRooms and subscribeToRoom
+- Refactored the componentDidMount method
+- Created a subscribeToRoom to be able to pass it down to roomslist
+
+### RoomsList Component
+
+- Rendering the Rooms List with all the Rooms we passed in(Subscribed and Unsubscribed)

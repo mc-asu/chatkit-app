@@ -15,7 +15,10 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    messages: [] //store our messages
+    roomId: null, //room.id isn't defined till we subscribe/join a room
+    messages: [], //store our messages
+    joinableRooms: [], // All rooms including not subscribed rooms
+    joinedRooms: [] // Rooms that the currentuser already subscribed to
   };
 
   componentDidMount() {
@@ -29,8 +32,29 @@ class App extends Component {
 
     chatManager.connect().then(currentUser => {
       this.currentUser = currentUser; // currentUser is now available in the whole app instance
-      this.currentUser.subscribeToRoom({
-        roomId: "19385683",
+      this.getRooms();
+    });
+  }
+
+  getRooms = () => {
+    this.currentUser
+      .getJoinableRooms()
+      .then(joinableRooms => {
+        this.setState({
+          joinableRooms,
+          joinedRooms: this.currentUser.rooms
+        });
+      })
+      .catch(err => console.log("error on joinableRooms: ", err));
+  };
+
+  subscribeToRoom = roomId => {
+    this.setState({ messages: [] });
+    //needed to prevent a bug, as where we subscribetoroom,
+    //we continuously append to our messages aray
+    this.currentUser
+      .subscribeToRoom({
+        roomId,
         hooks: {
           // event listener when a new message is "created/sent"
           onMessage: message => {
@@ -39,15 +63,24 @@ class App extends Component {
             });
           }
         }
-      });
-    });
-  }
+      })
+      //Updating the joinableRooms after subscribing
+      .then(room => {
+        //also sets our state roomid into the current room we are in
+        this.setState({
+          roomId: room.id
+        });
+        this.getRooms();
+      })
+      .catch(err => console.log("error on subscribing to room: ", err));
+  };
 
   sendMessage = text => {
-    //we will send this down to a child component, so that we get the data from the handleSubmit
+    //we will send this down to a child component, so that we get
+    // the data from the handleSubmit
     this.currentUser.sendMessage({
       text,
-      roomId: "19385683"
+      roomId: this.state.roomId
     });
   };
 
@@ -56,7 +89,10 @@ class App extends Component {
       <div className="app">
         <MessageList messages={this.state.messages} />
         <NewRoomForm />
-        <RoomsList />
+        <RoomsList
+          subscribeToRoom={this.subscribeToRoom}
+          rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
+        />
         <SendMessageForm sendMessage={this.sendMessage} />{" "}
         {/* inverse dataflow ( child to parent)*/}
       </div>
