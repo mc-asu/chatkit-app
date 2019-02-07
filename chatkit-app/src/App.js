@@ -84,16 +84,32 @@ class App extends Component {
     });
   };
 
+  createRoom = name => {
+    this.currentUser
+      .createRoom({
+        name
+      })
+      .then(room => this.subscribeToRoom(room.id))
+      .catch(err => console.log("error on create Room: ", err));
+  };
+
   render() {
     return (
       <div className="app">
-        <MessageList messages={this.state.messages} />
-        <NewRoomForm />
+        <MessageList
+          roomId={this.state.roomId}
+          messages={this.state.messages}
+        />
+        <NewRoomForm createRoom={this.createRoom} />
         <RoomsList
+          roomId={this.state.roomId}
           subscribeToRoom={this.subscribeToRoom}
           rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
         />
-        <SendMessageForm sendMessage={this.sendMessage} />{" "}
+        <SendMessageForm
+          disabled={!this.state.roomId}
+          sendMessage={this.sendMessage}
+        />
         {/* inverse dataflow ( child to parent)*/}
       </div>
     );

@@ -63,3 +63,31 @@ Installed: npm i prettier eslint-config-prettier eslint-plugin-prettier -D
 ### RoomsList Component
 
 - Rendering the Rooms List with all the Rooms we passed in(Subscribed and Unsubscribed)
+
+## 2/7/2019
+
+### RoomsList Component
+
+- Fixed a bug, where if another User is created and has not subscribed to rooms yet. the Room order would shuffle.
+
+- Added a functionality that highlights, which room the user has joined
+
+### MessageList Component
+
+- Added autoscroll
+
+### NewRoomForm
+
+- Added functionality ( 2 methods, handleChange and handleSubmit)
+
+### App
+
+- Added createRoom
+
+### SendMessageForm
+
+- Added disabled feature
+
+### MessageList
+
+- Added a Greeting, while not in any room

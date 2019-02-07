@@ -24,6 +24,7 @@ export default class SendMessageForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className="send-message-form">
         <input
+          disabled={this.props.disabled}
           onChange={this.handleChange} // event setup
           value={this.state.message} //controlling the value of our state programmatically
           placeholder="Type your message"
