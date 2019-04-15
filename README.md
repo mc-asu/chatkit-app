@@ -1,3 +1,5 @@
+#This version as of now is deprecated.
+
 # chatkit-app
 
 ## 2/4/2019
